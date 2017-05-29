@@ -18,5 +18,8 @@
   "homepage": "https://github.com/hdngr/treehouse-express-basics#readme",
   "devDependencies": {
     "express": "^4.15.3"
+  },
+  "dependencies": {
+    "pug": "^2.0.0-rc.1"
   }
 }
