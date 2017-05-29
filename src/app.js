@@ -12,7 +12,7 @@ app.set('views', __dirname + '/templates');
 
 
 app.get('/', function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hell there!' });
+  res.render('index');
 });
 
 app.get('/blog/:title?', function(req, res) {
@@ -22,8 +22,8 @@ app.get('/blog/:title?', function(req, res) {
     res.status(503);
     res.send("This page is under construction!");
   } else {
-    var post = POSTS[title];
-    res.send(post);
+    var post = POSTS[title] || {};  //return empty object is post does not exist
+    res.render('post', { post: post });
   }
 });
 
