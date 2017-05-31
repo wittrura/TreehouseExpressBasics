@@ -6,6 +6,7 @@ const app = express();
 const PORT = 3000;
 const POSTS = require('./mock/posts.json');
 
+app.use('/static', express.static(__dirname + '/public'));
 
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/templates');
