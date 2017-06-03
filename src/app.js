@@ -6,6 +6,10 @@ const app = express();
 const PORT = 3000;
 const POSTS = require('./mock/posts.json');
 
+let postsArray = Object.keys(POSTS).map(function(key){
+  return POSTS[key];
+});
+
 app.use('/static', express.static(__dirname + '/public'));
 
 app.set('view engine', 'pug');
@@ -21,7 +25,7 @@ app.get('/blog/:title?', function(req, res) {
 
   if (title === undefined) {
     res.status(503);
-    res.send("This page is under construction!");
+    res.render('blog', { posts: postsArray });
   } else {
     var post = POSTS[title] || {};  //return empty object is post does not exist
     res.render('post', { post: post });
