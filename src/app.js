@@ -35,6 +35,14 @@ app.get('/blog/:title?', function(req, res) {
   }
 });
 
+app.get('/api/posts', function(req, res) {
+  if (req.query.raw) {
+    res.json({data: POSTS});
+  } else {
+    res.json({data: postsArray});
+  }
+});
+
 app.listen(PORT, function() {
   console.log(`Listening on port ${PORT}...`);
 });
